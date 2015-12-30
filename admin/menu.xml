@@ -1,0 +1,87 @@
+<menu>
+    <menuitem label='Administration'>
+        <menu>
+              <menuitem label='Programs'>
+                  <icon>fa:file-code-o fa-fw green</icon>
+                  <action>SystemProgramList</action>
+              </menuitem>
+              <menuitem label='Groups'>
+                  <icon>fa:users fa-fw blue</icon>
+                  <action>SystemGroupList</action>
+              </menuitem>
+              <menuitem label='Users'>
+                  <icon>fa:user fa-fw blue</icon>
+                  <action>SystemUserList</action>
+              </menuitem>
+        </menu>
+    </menuitem>
+    
+    
+    
+     <menuitem label='Meu Perfil'>
+        <menu>
+            <menuitem label='Informações Pessoas'>
+             <icon>fa:user fa-fw blue</icon>
+                <action>frmPedidos#method=onLoad#</action>
+            </menuitem>           
+            
+        </menu>
+    </menuitem>
+    
+    <menuitem label='Meus Endereços'>
+        <menu>
+            <menuitem label='Lista de endereços'>
+                <icon>app/images/icons/house.png</icon>
+                <action>frmEndereco</action>
+            </menuitem> 
+                      
+        </menu>
+    </menuitem>
+    
+    <menuitem label='Formas de Pagamentos'>
+        <menu>
+
+            <menuitem label='Adicionar'>
+                <icon>app/images/icons/money_add.png</icon>
+                <action>Pagamentos</action>
+            </menuitem> 
+                      
+        </menu>
+    </menuitem>
+    
+   <menuitem label='Estabelecimentos'>
+        <menu>
+            <menuitem label='Visualizar Estabelecimento'>
+             <icon>app/images/icons/map.png</icon>
+                <action>Estabelecimento</action>
+            </menuitem>           
+           
+        </menu>
+    </menuitem>
+    
+    <menuitem label='Minhas Avaliações'>
+        <menu>
+         <menuitem label='Minhas últimas Avaliações'>
+                <icon>app/images/icons/book.png</icon>
+                <action>frmAvaliacao</action>
+            </menuitem> 
+            <menuitem label='Pedidos Avaliados'>
+                <icon>app/images/icons/book_add.png</icon>
+                <action>frmAvaliacao</action>
+            </menuitem> 
+             <menuitem label='Avaliações Pendentes'>
+                <icon>app/images/icons/book_key.png</icon>
+                <action>frmAvaliacao</action>
+            </menuitem>           
+        </menu>
+    </menuitem>
+    
+    <menuitem label='Logout'>
+        <menu>
+              <menuitem label='Logout'>
+                  <icon></icon>
+                  <action>LoginForm#method=onLogout#static=1</action>
+              </menuitem>
+        </menu>
+    </menuitem>
+</menu>
