@@ -22,7 +22,7 @@
         <menu>
             <menuitem label='Informações Pessoas'>
              <icon>fa:user fa-fw blue</icon>
-                <action>frmPedidos#method=onLoad#</action>
+                <action>DadosForm#method=onLoad#</action>
             </menuitem>           
             
         </menu>
@@ -32,7 +32,7 @@
         <menu>
             <menuitem label='Lista de endereços'>
                 <icon>app/images/icons/house.png</icon>
-                <action>frmEndereco</action>
+                <action>EnderecoForm</action>
             </menuitem> 
                       
         </menu>
@@ -43,7 +43,7 @@
 
             <menuitem label='Adicionar'>
                 <icon>app/images/icons/money_add.png</icon>
-                <action>Pagamentos</action>
+                <action>PagamentosForm</action>
             </menuitem> 
                       
         </menu>
@@ -53,7 +53,7 @@
         <menu>
             <menuitem label='Visualizar Estabelecimento'>
              <icon>app/images/icons/map.png</icon>
-                <action>Estabelecimento</action>
+                <action>EstabelecimentoForm</action>
             </menuitem>           
            
         </menu>
