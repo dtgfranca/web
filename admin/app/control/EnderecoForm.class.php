@@ -28,6 +28,14 @@ class EnderecoForm extends TPage
         $cUser  = new THidden('system_user_id');
         $complemento = new TText('complemento');
         
+        //Adicionando validações
+        
+        $cep->addValidation("cep",new TRequiredValidator);
+        $rua->addValidation("rua",new TRequiredValidator);
+        $bairro->addValidation("bairro",new TRequiredValidator);
+        $numero->addValidation("numero",new TRequiredValidator);
+       
+        
         
         
         #$name->addValidation('Name', new TRequiredValidator);
@@ -138,7 +146,9 @@ class EnderecoForm extends TPage
             TTransaction::open('permission');
             
             // get the form data into an active record Category
-            $category = $this->form->getData('Enderecos');           
+            $category = $this->form->getData('Enderecos');    
+            
+            $this->form->validate();       
            
             // stores the object
             $category->store();

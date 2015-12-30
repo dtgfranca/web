@@ -28,8 +28,8 @@ class DadosForm extends TPage
         $usuario     = new TEntry('login');
         $date       = new TDate('date');
         $cep       = new TEntry('cep');
-        $senha     = new TPassword('senha');
-        $cSenha   = new TPassword('senha1');
+        $senha     = new TPassword('password');
+        $cSenha   = new TPassword('rpassword');
       
         
 
@@ -37,11 +37,23 @@ class DadosForm extends TPage
         $cep->setMask('99.999-999');
         //$id->setValue(TSession::getValue('id'));
         //$usuario->setValue (TSession::getValue('login'));
+    
         $id->setEditable(FALSE);
+        
+        //Adcionando validaões
+        
+        $nome->addValidation("name",new TRequiredValidator);
+        $email->addValidation("email",new TEmailValidator);
+        $telefone->addValidation("telefone",new TRequiredValidator);
+        $usuario->addValidation("login",new TRequiredValidator);
+        $date->addValidation("date",new TRequiredValidator);
+        $senha->addValidation("passsword",new TRequiredValidator);
+        $cSenha->addValidation("rpasssword",new TRequiredValidator);
+      
        
         
         // add the fields inside the form
-         $this->form->addQuickField('Código',    $id,80);
+        $this->form->addQuickField('Código',    $id,80);
         $this->form->addQuickField('Nome',    $nome,700);
         $this->form->addQuickField('Usuario',    $usuario,350);
         $this->form->addQuickField('Nova senha ',$senha,200);
@@ -75,14 +87,21 @@ class DadosForm extends TPage
      */
     public function onSave($param)
     {
-       
+    
         
         // put the data back to the form      
         
         try{
-                TTransaction::open('permission');
-                 $data = $this->form->getData('Dados'); // optional parameter: active record class
+                TTransaction::open('permission');                
+                 $data = $this->form->getData('Dados'); // optional parameter: active record class                 
+                 $this->form->validate();
+                  if($data->password != $data->rpassword){
+                        throw new Exception('Senhas nao conferem');       
+                   }
+                 $data->password = md5($data->rpassword);
                  $data->store();
+                 $data->password='';
+                 $data->rpassword='';
                  $this->form->setData($data);
                  TTransaction::close();
                  new TMessage('info', "Dados Cadastrados com sucesso");
@@ -90,17 +109,20 @@ class DadosForm extends TPage
         }catch(Exception  $e){
              
          // show the message
-         new TMessage('info', $e->getMessage());
+         new TMessage('error', $e->getMessage());
         }
       
        
     }
     public function onLoad(){
+     
         
         try{
             TTransaction::open('permission');
+           
             $id = TSession::getValue('id');
             $object = new Dados($id);
+            $object->password ='';
             $this->form->setData($object);
             TTransaction::close();
         }catch(Exception  $e){         

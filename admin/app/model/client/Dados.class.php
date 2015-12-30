@@ -13,7 +13,7 @@ class Dados extends TRecord
         //campos do banco de dados
         parent::addAttribute('name');
         parent::addAttribute('login');
-        //parent::addAtribute('password');
+        parent::addAttribute('password');
         parent::addAttribute('email');
         parent::addAttribute('phone');
         parent::addAttribute('date');
